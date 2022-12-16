@@ -1,5 +1,5 @@
 const express =require('express')
-const {Relasi, Identitas, Jenis_relasi} = require('./../models')
+const {Aset, Kepemilikan_aset,Relasi, Identitas, Jenis_relasi} = require('./../models')
 const relasiController = require('./../controllers/relasi_keluarga');
 const jenis_relasi = require('../models/jenis_relasi');
 const router = express.Router()
@@ -30,6 +30,7 @@ router.get('/',async (req, res) => {
 router.get('/:id',async (req, res) => {
     let nama = []
     let relasi = []
+    let aset = []
     const identitas_tunggal = await Identitas.findAll({
         raw : true,
         nest: true,
@@ -70,9 +71,31 @@ router.get('/:id',async (req, res) => {
             attributes:['jenis_relasi']
         })
         relasi.push(nama_relasi)
-
     }
-    res.render('relasi_keluarga/home', {identitas_tunggal:identitas_tunggal ,identitas:identitas, identitas_reveal:nama, jenis_relasi:relasi})
+
+    const asets = await Aset.findAll({
+        raw : true,
+        nest: true,
+        include: [{
+            model: Kepemilikan_aset, 
+            as:'aset',
+            where: {id_identitas:identitas_tunggal[0].id}
+        }],
+    })
+
+    // console.log("aset nya ",asets);
+
+    // for (let index = 0; index < asets.length; index++) {
+    //     const kepemilikan_aset = await Kepemilikan_aset.findAll({
+    //         raw : true,
+    //         nest: true,
+    //         where:{
+    //             id_aset:asets[0].id
+    //         },
+    //         attributes:['nama_aset']
+    //     })
+    // }
+    res.render('relasi_keluarga/home', {aset:asets, identitas_tunggal:identitas_tunggal ,identitas:identitas, identitas_reveal:nama, jenis_relasi:relasi})
 
 })
 

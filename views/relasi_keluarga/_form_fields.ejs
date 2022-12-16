@@ -1,41 +1,26 @@
-<!-- <label for="jenis_relasi">Nama Anggota Keluarga</label>
-    <select class=" form-group form-control" id="identitas_1"  name="identitas_1">
-        <% for(var i=0; i < identitas.length; i++) { %>
-            <option  value= <%= identitas[i].id %> > <%= identitas[i].nama %></option>
-        <% } %>
-    </select> -->
+<label for="jenis_relasi">Hubungan</label>
+<select class=" form-group form-control" id="jenis_relasi"  name="jenis_relasi">
+    <% for(var i=0; i < jenis_relasi.length; i++) { %>
+        <option value= <%= jenis_relasi[i].id %> > <%= jenis_relasi[i].jenis_relasi %></option>
+    <% } %>
+</select>
 
-    <!-- <% if(method == "edit"){ %>
-        
-      <% } else{ %>  
-        <h1>bar</h1>
-     <% } %> -->
-
-     
-    
-
-        <label for="jenis_relasi">Hubungan</label>
-        <select class=" form-group form-control" id="jenis_relasi"  name="jenis_relasi">
-            <% for(var i=0; i < jenis_relasi.length; i++) { %>
-                <option value= <%= jenis_relasi[i].id %> > <%= jenis_relasi[i].jenis_relasi %> dari</option>
+<div style="display:
+    <% if (method==="edit") { %> 
+        none;
+    <% } %>
+    <label for="jenis_relasi">Nama Anggota Keluarga</label>
+        <select class=" form-group form-control" id="identitas_2"  name="identitas_2">
+            <% for(var i=0; i < identitas.length; i++) { %>
+                <option value= <%= identitas[i].id %> > <%= identitas[i].nama %></option>
             <% } %>
         </select>
-
-        <div style="display:
-        <% if (method==="edit") { %> 
-          none;
-        <% } %>
-            <label for="jenis_relasi">Nama Anggota Keluarga</label>
-                <select class=" form-group form-control" id="identitas_2"  name="identitas_2">
-                    <% for(var i=0; i < identitas.length; i++) { %>
-                        <option value= <%= identitas[i].id %> > <%= identitas[i].nama %></option>
-                    <% } %>
-                </select>
-        </div>
+</div>
 
 
 <a href="/" class="btn btn-secondary">Cancel</a>
 <button type="submit" class="btn btn-primary">Save</button>
 
-<a href="/jenis_relasi/new" class="btn btn-secondary">Tambah Jenis Hubungan Keluarga</a>
+<a href="/aset/new" class="btn btn-primary">Tambah Aset Anggota Kelurga</a>
+
 

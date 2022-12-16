@@ -18,6 +18,13 @@ module.exports = (sequelize, DataTypes) => {
   }, {
     sequelize,
     modelName: 'Aset',
+    freezeTableName: true,
   });
+  Aset.associate = function(models) {
+    Aset.hasMany(models.Kepemilikan_aset, {
+      foreignKey: 'id_aset',
+      as: 'aset'
+    });
+  };
   return Aset;
 };

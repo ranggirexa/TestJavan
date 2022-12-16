@@ -8,10 +8,9 @@
     <title>Blog</title>
 </head>
 <body>
-    <div class="container">  
+    <div class="container row">  
         <div class="col-sm-6">
-            <h1 class="mb-4">Nama :
-                <%= identitas_tunggal[0].nama %>
+            <h1 class="mb-4">Nama Anggota Keluarga :
             </h1>
 
             <h4> Hubungan Keluarga </h4>
@@ -20,6 +19,7 @@
                 <tr>
                     <th>Nama Anggota Keluarga</th>
                     <th>Hubungan</th>
+                    <th>...</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -29,8 +29,6 @@
                             <td> <%= jenis_relasi[i][0].jenis_relasi %></td>
                             <td>
                                 <a href="edit/<%=identitas[i].relasi.id %>" class="btn btn-info">Edit</a>
-                            </td>
-                            <td>
                                 <form action="delete/<%=identitas[i].relasi.id%>?_method=DELETE" method="POST" class="d-inline" >
                                     <input type="hidden" name="id_relasi" value="<%= identitas[0].id %>"/>
                                     <button type="submit" class="btn btn-danger" >DELETE</button>
@@ -42,6 +40,34 @@
             </table>
 
             <a href="new/<%=identitas_tunggal[0].id %>" class="btn btn-primary">Tambah Relasi Kelurga</a>
+        </div>
+
+        <div class="col-sm-6">
+            <h1 class="mb-4">
+                <%= identitas_tunggal[0].nama %>
+            </h1>
+            <h4> Aset Kekayaan</h4>
+            <table class="table table-hover">
+                <thead>
+                <tr>
+                    <th>Aset</th>
+                    <th>...</th>
+                </tr>
+                </thead>
+                <tbody>
+                    <% for(var i=0; i < aset.length; i++) { %>
+                        <tr>
+                            <td> <%= aset[i].nama_aset %></td>
+                            <td>
+                            
+                            </td>
+                        </tr>
+                    <% } %>
+                </tbody>
+            </table>
+
+            <a href="/kepemilikan_aset/new/<%=identitas_tunggal[0].id %>" class="btn btn-primary">Tambah Aset Anggota Kelurga</a>
+        </div>
         </div>
     </div>
 

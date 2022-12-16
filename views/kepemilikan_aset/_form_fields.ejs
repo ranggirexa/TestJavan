@@ -1,0 +1,11 @@
+<label for="kepemilikan_aset">Aset</label>
+<select class=" form-group form-control" id="kepemilikan_aset"  name="kepemilikan_aset">
+    <% for(var i=0; i < aset.length; i++) { %>
+        <option value= <%= aset[i].id %> > <%= aset[i].nama_aset %></option>
+    <% } %>
+</select>
+
+<a href="/" class="btn btn-secondary">Cancel</a>
+<button type="submit" class="btn btn-primary">Save</button>
+
+<a href="/aset/new/<%= id_identitas %>" class="btn btn-secondary">Tambah Jenis Aset</a>

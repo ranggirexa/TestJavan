@@ -3,6 +3,8 @@ const methodOverride = require('method-override')
 const identitasRouter = require('./routes/identitas')
 const jenis_relasiRouter = require('./routes/jenis_relasi')
 const relasi_keluargaRouter = require('./routes/relasi_keluarga')
+const asetRouter = require('./routes/aset')
+const kepemilikan_asetRouter = require('./routes/kepemilikan_aset')
 const {Relasi, Identitas, Jenis_relasi} = require('./models')
 
 const port = process.env.PORT || 5000
@@ -23,17 +25,12 @@ app.get('/',async (req, res) => {
 
 })
 
-// app.get('/identitas',(req, res) => {
-//     console.log(req.query);
-//     const { name = "void"} = req.query
-//     res.render('identitas',{
-//         name:name
-//     })
-// })
 
 app.use('/identitas',identitasRouter)
 app.use('/jenis_relasi',jenis_relasiRouter)
 app.use('/relasi_keluarga',relasi_keluargaRouter)
+app.use('/aset',asetRouter)
+app.use('/kepemilikan_aset',kepemilikan_asetRouter)
 
 app.listen(port, () =>{
     console.log(`server running at port ${port}`);

@@ -4,12 +4,9 @@ module.exports = {
 
     add_relation:async (req, res) =>{
         const body = req.body
-
-        console.log("aaa ",req.body);
         value = []
         for (var key in body) {
             if (body.hasOwnProperty(key)) {
-            //   console.log(key, body[key])
               value.push(body[key])
             }
         }
